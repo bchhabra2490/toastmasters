@@ -1,0 +1,9 @@
+<?php
+	session_start();
+	if(isset($_SESSION['logged'])||isset($_COOKIE['username'])){
+		session_destroy();
+		$expire=time()-1000;
+		setcookie('username',null,$expire);
+		header('Refresh:0;URL=login.php');
+	}
+?>

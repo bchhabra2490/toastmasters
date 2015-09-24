@@ -1,0 +1,194 @@
+<?php
+	session_start();
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	<link  rel="shortcut icon" href="images/icon.ico" type="image/png"/>
+    <title>Thapar Toastmasters</title>
+
+    <!-- Bootstrap Core CSS -->
+	 <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	<style>
+		a:hover,a,a:focus{
+			color:#333;
+			text-decoration:none;
+		}
+	</style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" data-hover="Home Page" href="index.php">Toastmasters</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">Events</a>
+                    </li>
+                    <li>
+                        <a href="club_officers.php">Club Officers</a>
+                    </li>
+					<?php if(isset($_SESSION['logged'])||isset($_COOKIE['username'])){
+					?>
+					<li role="presentation" class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+						  <?php echo ucfirst($_SESSION['username']);?> <span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+						  <li><a href="logout.php">Log Out</a></li>
+						  <li><a href="#">Change Password</a></li>
+						</ul>
+					</li>
+					<?php
+					}
+					?>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Image Background Page Header -->
+    <!-- Note: The background image is set within the business-casual.css file. -->
+    <header class="business-header">
+		<img id="bg-img" src="images/bg.jpg" alt="">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="tagline"></h1>
+				</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <hr>
+
+        <div class="row">
+            <div class="col-sm-8">
+				<h2>What We Do</h2>
+                <p>Introduce the visitor to the business using clear, informative text. Use well-targeted keywords within your sentences to make sure search engines can find the business.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et molestiae similique eligendi reiciendis sunt distinctio odit? Quia, neque, ipsa, adipisci quisquam ullam deserunt accusantium illo iste exercitationem nemo voluptates asperiores.</p>
+            </div>
+            <div class="col-sm-4">
+                <h2>Contact Us</h2>
+                <address>
+                    <strong>Thapar Toastmasters</strong>
+                    <br>CILP,Thapar University
+                    <br>Patiala,India
+                    <br>
+                </address>
+                <address>
+                    <abbr title="Phone">P:</abbr>(123) 456-7890
+                    <br>
+                    <abbr title="Email">E:</abbr> <a href="mailto:#">thapartmclub@gmail.com</a>
+                </address>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <img height="300" width="300" class="img-responsive" style="border-radius:100%" id="slideshow" src="" alt="">
+                <script>
+				//slideshow in memories division
+				var mem=document.getElementById('slideshow');
+				var images=['1.jpg','2.jpg'];
+				mem.src='images/memories/1.jpg';
+				i=0
+				function slideshow(){
+					if(i==2){
+						i=0;
+					}
+					mem.src='images/memories/'+images[i];
+					i=i+1;
+				}
+				setInterval("slideshow()",3000);
+				</script>
+				<center>
+                <a href="gallery.html"><h2 id="events_id"><span class="glyphicon glyphicon-film"></span> Memories</h2></a><p id="events_details" >Life brings tears,smiles and memories.The tears dry; The smiles fade; but memories..<br>Memories LAST FOREVER</p></center>
+            </div><!--
+			<div class="col-sm-4 feature">
+					<div class="panel">
+						<div class="panel-heading">
+							<h3 class="panel-title">Club Officers</h3>
+						</div>
+						<ul style="text-decoration:none;">
+							<li>Shubham Sharma</li>
+						</ul>
+					</div>
+			</div>-->
+            <div class="col-sm-4 col-sm-offset-4">
+                <img class="img-circle img-responsive img-center" src="images/meeting.jpg" alt="">
+                <center>
+					<h2><?php echo $theme;?></h2>
+					<h5>Date:<?php echo $date;?></h5>
+					<h5>Time:<?php echo $time;?></h5>
+					<h5>Venue:<?php echo $venue;?></h5>
+				</center>	
+            </div>
+        </div>
+        <!-- /.row -->
+		<div class="tabbable">
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#tab1" data-toggle="tab">ARTICLE</li>
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane active" id="tab1">
+							<h4><?php echo $title;?> <span class="glyphicon glyphicon-blackboard"></span> <small><?php echo 'By:'.$written_by.'<br>Date:'.$date;?></small></h4>
+							<p><?php echo $content;?></p>
+						</div>
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Thapar Toastmasters Club</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
